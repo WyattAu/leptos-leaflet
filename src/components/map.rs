@@ -7,6 +7,9 @@ use crate::types::MapOptions;
 
 /// The main Map component. Wraps a Leaflet map instance.
 ///
+/// Provides reactive signals for map state and methods for interacting
+/// with the map programmatically.
+///
 /// # Example
 /// ```rust,no_run
 /// use leptos_leaflet::{Map, MapOptions, TileLayer};
@@ -28,7 +31,17 @@ pub fn Map(
     #[prop(optional)] children: Option<Children>,
 ) -> impl IntoView {
     let options = options.unwrap_or_default();
-    let id_for_closure = id.clone();
+    let id_for_clone = id.clone();
+
+    // Create reactive signals for map state
+    let (_map_ready, set_map_ready) = signal(false);
+    let (_map_center, set_map_center) = signal(options.center);
+    let (_map_zoom, set_map_zoom) = signal(options.zoom);
+
+    // Store the map JS object in a RefCell for imperative access
+    // Use Rc to allow sharing across closures
+    let map_js = std::rc::Rc::new(std::cell::RefCell::<Option<JsValue>>::new(None));
+    let map_js_for_async = map_js.clone();
 
     // Initialize map after mount
     Effect::new(move |_| {
@@ -37,8 +50,9 @@ pub fn Map(
             return; // SSR, skip
         }
 
-        let id_clone = id_for_closure.clone();
+        let id_clone = id_for_clone.clone();
         let options_clone = options.clone();
+        let map_js = map_js_for_async.clone();
 
         wasm_bindgen_futures::spawn_local(async move {
             // Load Leaflet
@@ -74,8 +88,16 @@ pub fn Map(
             // Create map
             let map = ffi::create_map(&id_clone, &opts.into());
 
+            // Store map reference
+            map_js.borrow_mut().replace(map.clone());
+
+            // Update reactive signals
+            set_map_center.set(options_clone.center);
+            set_map_zoom.set(options_clone.zoom);
+            set_map_ready.set(true);
+
             // Invalidate size after layout settle
-            let map_clone = map.clone();
+            let map_clone = map;
             let callback = wasm_bindgen::closure::Closure::<dyn Fn()>::new(move || {
                 ffi::invalidate_size(&map_clone);
             });
@@ -99,7 +121,7 @@ pub fn Map(
 }
 
 /// Helper to convert a Rust array to a JavaScript array
-fn to_js_array(arr: &[f64]) -> JsValue {
+pub fn to_js_array(arr: &[f64]) -> JsValue {
     let js_arr = js_sys::Array::new();
     for &val in arr {
         js_arr.push(&JsValue::from_f64(val));

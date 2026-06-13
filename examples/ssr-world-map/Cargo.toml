@@ -1,0 +1,11 @@
+[package]
+name = "ssr-world-map"
+version = "0.1.0"
+edition = "2021"
+publish = false
+
+[dependencies]
+leptos = { version = "0.8.15", features = ["csr"] }
+leptos-leaflet = { path = "../" }
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
