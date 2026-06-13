@@ -1,0 +1,9 @@
+[package]
+name = "world-map-example"
+version = "0.1.0"
+edition = "2021"
+publish = false
+
+[dependencies]
+leptos = { version = "0.8.15", features = ["csr"] }
+leptos-leaflet = { path = "../" }
