@@ -264,6 +264,35 @@ fn GeoMap() -> impl IntoView {
 | `hydrate` | No | Hydration support |
 | `islands` | No | Islands mode support |
 
+## State Management
+
+The library provides helper functions for imperative map control:
+
+```rust
+use leptos_leaflet::{create_tile_layer, create_circle_marker, add_layer_to_map};
+
+// Create layers programmatically
+let tile_layer = create_tile_layer(
+    "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",
+    None,
+);
+
+// Add to map
+add_layer_to_map(&map_js_value, &tile_layer);
+```
+
+## Examples
+
+See `examples/world-map/` for a complete working example demonstrating:
+- Map initialization with custom options
+- Tile layer loading
+- Circle markers for earthquakes
+- GeoJSON layer for country boundaries
+- Interactive layer toggles
+- Country click handling
+
+Run with: `cargo run --example world-map`
+
 ## Requirements
 
 - Rust 1.70+
