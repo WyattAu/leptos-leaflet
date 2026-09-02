@@ -186,19 +186,25 @@ impl Default for FitBoundsOptions {
 /// Layer state for toggling visibility
 #[derive(Clone, Debug, Default, Serialize, Deserialize)]
 pub struct LayerState {
+    /// Whether earthquake layer is visible.
     pub quakes: bool,
+    /// Whether border layer is visible.
     pub borders: bool,
+    /// Whether capital cities layer is visible.
     pub capitals: bool,
 }
 
 /// A geographic coordinate
 #[derive(Clone, Debug, Serialize, Deserialize)]
 pub struct LatLng {
+    /// Latitude in degrees.
     pub lat: f64,
+    /// Longitude in degrees.
     pub lng: f64,
 }
 
 impl LatLng {
+    /// Create a new `LatLng` from latitude and longitude.
     pub fn new(lat: f64, lng: f64) -> Self {
         Self { lat, lng }
     }
@@ -207,11 +213,14 @@ impl LatLng {
 /// Bounding box
 #[derive(Clone, Debug, Serialize, Deserialize)]
 pub struct LatLngBounds {
+    /// South-west corner of the bounds.
     pub south_west: LatLng,
+    /// North-east corner of the bounds.
     pub north_east: LatLng,
 }
 
 impl LatLngBounds {
+    /// Create a new `LatLngBounds` from south-west and north-east corners.
     pub fn new(south_west: LatLng, north_east: LatLng) -> Self {
         Self {
             south_west,

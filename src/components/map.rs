@@ -25,9 +25,13 @@ use crate::types::MapOptions;
 /// ```
 #[component]
 pub fn Map(
+    /// Unique identifier for the map container element.
     #[prop(into)] id: String,
+    /// Map initialization options.
     #[prop(optional)] options: Option<MapOptions>,
+    /// Callback fired after map initialization.
     #[prop(optional)] _on_init: Option<Box<dyn Fn(web_sys::Element) + Send + Sync>>,
+    /// Child layers to add to the map.
     #[prop(optional)] children: Option<Children>,
 ) -> impl IntoView {
     let options = options.unwrap_or_default();

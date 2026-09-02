@@ -24,7 +24,9 @@ use crate::types::CircleMarkerOptions;
 /// ```
 #[component]
 pub fn CircleMarker(
+    /// Geographic position of the marker.
     latlng: crate::types::LatLng,
+    /// Visual options for the circle marker.
     #[prop(optional)] options: CircleMarkerOptions,
 ) -> impl IntoView {
     Effect::new(move |_| {

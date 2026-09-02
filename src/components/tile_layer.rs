@@ -17,7 +17,9 @@ use crate::types::TileLayerOptions;
 /// ```
 #[component]
 pub fn TileLayer(
+    /// URL template for tile images (e.g., `https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png`).
     #[prop(into)] url: String,
+    /// Tile layer options.
     #[prop(optional)] options: Option<TileLayerOptions>,
 ) -> impl IntoView {
     let _options = options.unwrap_or_default();

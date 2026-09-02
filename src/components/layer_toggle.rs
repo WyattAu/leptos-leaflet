@@ -17,8 +17,11 @@ use std::rc::Rc;
 /// ```
 #[component]
 pub fn LayerToggle(
+    /// Label text for the toggle button.
     #[prop(into)] label: String,
+    /// Whether the layer is currently active.
     #[prop(optional)] active: Option<bool>,
+    /// Callback fired when the toggle state changes.
     #[prop(optional)] on_toggle: Option<Rc<dyn Fn(bool)>>,
 ) -> impl IntoView {
     let is_active = active.unwrap_or(true);

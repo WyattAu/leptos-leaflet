@@ -20,8 +20,11 @@ use crate::types::GeoJsonOptions;
 /// ```
 #[component]
 pub fn GeoJsonLayer(
+    /// GeoJSON data as a string.
     data: String,
+    /// Rendering options for the GeoJSON layer.
     #[prop(optional)] options: Option<GeoJsonOptions>,
+    /// Callback fired when a feature is clicked.
     #[prop(optional)] on_click: Option<Box<dyn Fn(String) + Send + Sync>>,
 ) -> impl IntoView {
     let _options = options.unwrap_or_default();
