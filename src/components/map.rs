@@ -12,6 +12,7 @@ use crate::types::MapOptions;
 ///
 /// # Example
 /// ```rust,no_run
+/// use leptos::prelude::*;
 /// use leptos_leaflet::{Map, MapOptions, TileLayer};
 ///
 /// #[component]

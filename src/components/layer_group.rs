@@ -5,13 +5,14 @@ use leptos::prelude::*;
 ///
 /// # Example
 /// ```rust,no_run
+/// use leptos::prelude::*;
 /// use leptos_leaflet::LayerGroup;
 ///
-/// view! {
+/// let _ = view! {
 ///     <LayerGroup id="earthquakes">
 ///         // Child markers will be added to this group
 ///     </LayerGroup>
-/// }
+/// };
 /// ```
 #[component]
 pub fn LayerGroup(

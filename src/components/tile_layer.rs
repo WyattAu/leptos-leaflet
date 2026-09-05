@@ -6,14 +6,15 @@ use crate::types::TileLayerOptions;
 ///
 /// # Example
 /// ```rust,no_run
-/// use leptos_leaflet::TileLayer;
+/// use leptos::prelude::*;
+/// use leptos_leaflet::{TileLayer, TileLayerOptions};
 ///
-/// view! {
+/// let _ = view! {
 ///     <TileLayer
 ///         url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
 ///         options=TileLayerOptions::default()
 ///     />
-/// }
+/// };
 /// ```
 #[component]
 pub fn TileLayer(

@@ -5,15 +5,17 @@ use std::rc::Rc;
 ///
 /// # Example
 /// ```rust,no_run
+/// use leptos::prelude::*;
+/// use leptos::logging::log;
 /// use leptos_leaflet::LayerToggle;
 ///
-/// view! {
+/// let _ = view! {
 ///     <LayerToggle
 ///         label="Earthquakes"
 ///         active=true
-///         on_toggle=|active| { log!("Layer toggled: {}", active); }
+///         on_toggle=std::rc::Rc::new(|active| { log!("Layer toggled: {}", active); })
 ///     />
-/// }
+/// };
 /// ```
 #[component]
 pub fn LayerToggle(
@@ -56,15 +58,17 @@ pub fn LayerToggle(
 ///
 /// # Example
 /// ```rust,no_run
-/// use leptos_leaflet::LayerToggleGroup;
+/// use leptos::prelude::*;
+/// use leptos::logging::log;
+/// use leptos_leaflet::{LayerToggle, LayerToggleGroup};
 ///
-/// view! {
+/// let _ = view! {
 ///     <LayerToggleGroup>
 ///         <LayerToggle label="Quakes" active=true />
 ///         <LayerToggle label="Borders" active=true />
 ///         <LayerToggle label="Capitals" active=false />
 ///     </LayerToggleGroup>
-/// }
+/// };
 /// ```
 #[component]
 pub fn LayerToggleGroup(

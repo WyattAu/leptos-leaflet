@@ -8,15 +8,19 @@ use crate::types::GeoJsonOptions;
 ///
 /// # Example
 /// ```rust,no_run
+/// use leptos::prelude::*;
+/// use leptos::logging::log;
 /// use leptos_leaflet::{GeoJsonLayer, GeoJsonOptions};
 ///
-/// view! {
+/// let geojson_data = r#"{"type":"FeatureCollection","features":[]}"#;
+///
+/// let _ = view! {
 ///     <GeoJsonLayer
-///         data=geojson_data
+///         data=geojson_data.to_string()
 ///         options=GeoJsonOptions::default()
-///         on_click=|name| { log!("Clicked: {}", name); }
+///         on_click=Box::new(|name| { log!("Clicked: {}", name); })
 ///     />
-/// }
+/// };
 /// ```
 #[component]
 pub fn GeoJsonLayer(

@@ -6,16 +6,17 @@ use crate::types::PopupOptions;
 ///
 /// # Example
 /// ```rust,no_run
-/// use leptos_leaflet::Popup;
+/// use leptos::prelude::*;
+/// use leptos_leaflet::{Popup, PopupOptions};
 ///
-/// view! {
+/// let _ = view! {
 ///     <Popup options=PopupOptions::default()>
 ///         <div class="popup-content">
 ///             <h3>"London"</h3>
 ///             <p>"Population: 8.9M"</p>
 ///         </div>
 ///     </Popup>
-/// }
+/// };
 /// ```
 #[component]
 pub fn Popup(
@@ -40,13 +41,12 @@ pub fn Popup(
 ///
 /// # Example
 /// ```rust,no_run
+/// use leptos::prelude::*;
 /// use leptos_leaflet::Tooltip;
 ///
-/// view! {
-///     <Tooltip content="London, UK">
-///         <div class="marker">"L"</div>
-///     </Tooltip>
-/// }
+/// let _ = view! {
+///     <Tooltip content="London, UK" />
+/// };
 /// ```
 #[component]
 pub fn Tooltip(
