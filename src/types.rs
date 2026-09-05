@@ -184,7 +184,7 @@ impl Default for FitBoundsOptions {
 }
 
 /// Layer state for toggling visibility
-#[derive(Clone, Debug, Default, Serialize, Deserialize)]
+#[derive(Clone, Debug, Serialize, Deserialize)]
 pub struct LayerState {
     /// Whether earthquake layer is visible.
     pub quakes: bool,
@@ -192,6 +192,17 @@ pub struct LayerState {
     pub borders: bool,
     /// Whether capital cities layer is visible.
     pub capitals: bool,
+}
+
+impl Default for LayerState {
+    /// All layers are visible by default.
+    fn default() -> Self {
+        Self {
+            quakes: true,
+            borders: true,
+            capitals: true,
+        }
+    }
 }
 
 /// A geographic coordinate
