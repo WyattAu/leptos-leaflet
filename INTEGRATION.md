@@ -1,6 +1,6 @@
-# Integration Guide: leptos-leaflet with SSR Personal Site
+# Integration Guide: leptos-leaflet-wyatt with SSR Personal Site
 
-This guide explains how to integrate the `leptos-leaflet` library with the existing SSR personal site world map.
+This guide explains how to integrate the `leptos-leaflet-wyatt` library with the existing SSR personal site world map.
 
 ## Current State
 
@@ -44,7 +44,7 @@ async function initMap() {
 
 **New code (Leptos):**
 ```rust
-use leptos_leaflet::{Map, MapOptions, TileLayer, TileLayerOptions};
+use leptos_leaflet_wyatt::{Map, MapOptions, TileLayer, TileLayerOptions};
 
 view! {
     <Map
@@ -96,7 +96,7 @@ function initLayerToggles() {
 
 **New code (Leptos):**
 ```rust
-use leptos_leaflet::{LayerToggle, LayerToggleGroup};
+use leptos_leaflet_wyatt::{LayerToggle, LayerToggleGroup};
 
 let (show_quakes, set_show_quakes) = signal(true);
 let (show_borders, set_show_borders) = signal(true);
@@ -156,7 +156,7 @@ function initQuakeMap(data) {
 
 **New code (Leptos):**
 ```rust
-use leptos_leaflet::{CircleMarker, CircleMarkerOptions, LatLng, LayerGroup};
+use leptos_leaflet_wyatt::{CircleMarker, CircleMarkerOptions, LatLng, LayerGroup};
 
 let (earthquakes, set_earthquakes) = signal(Vec::<Earthquake>::new());
 
@@ -224,7 +224,7 @@ function loadCountryBoundaries() {
 
 **New code (Leptos):**
 ```rust
-use leptos_leaflet::{GeoJsonLayer, GeoJsonOptions};
+use leptos_leaflet_wyatt::{GeoJsonLayer, GeoJsonOptions};
 
 let (selected_country, set_selected_country) = signal(Option::<String>::None);
 

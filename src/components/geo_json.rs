@@ -10,7 +10,7 @@ use crate::types::GeoJsonOptions;
 /// ```rust,no_run
 /// use leptos::prelude::*;
 /// use leptos::logging::log;
-/// use leptos_leaflet::{GeoJsonLayer, GeoJsonOptions};
+/// use leptos_leaflet_wyatt::{GeoJsonLayer, GeoJsonOptions};
 ///
 /// let geojson_data = r#"{"type":"FeatureCollection","features":[]}"#;
 ///

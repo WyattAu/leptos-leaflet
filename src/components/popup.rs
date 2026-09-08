@@ -7,7 +7,7 @@ use crate::types::PopupOptions;
 /// # Example
 /// ```rust,no_run
 /// use leptos::prelude::*;
-/// use leptos_leaflet::{Popup, PopupOptions};
+/// use leptos_leaflet_wyatt::{Popup, PopupOptions};
 ///
 /// let _ = view! {
 ///     <Popup options=PopupOptions::default()>
@@ -42,7 +42,7 @@ pub fn Popup(
 /// # Example
 /// ```rust,no_run
 /// use leptos::prelude::*;
-/// use leptos_leaflet::Tooltip;
+/// use leptos_leaflet_wyatt::Tooltip;
 ///
 /// let _ = view! {
 ///     <Tooltip content="London, UK" />

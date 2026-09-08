@@ -1,4 +1,7 @@
 //! Leaflet.js bindings for Leptos.
+//!
+//! Published on crates.io as [`leptos-leaflet-wyatt`](https://crates.io/crates/leptos-leaflet-wyatt)
+//! (the `leptos-leaflet` name is taken by an unrelated crate).
 
 #![deny(missing_docs)]
 

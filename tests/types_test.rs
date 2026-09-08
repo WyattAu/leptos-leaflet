@@ -1,4 +1,4 @@
-use leptos_leaflet::types::*;
+use leptos_leaflet_wyatt::types::*;
 
 #[test]
 fn test_map_options_default() {

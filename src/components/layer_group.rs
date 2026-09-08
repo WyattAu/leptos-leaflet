@@ -6,7 +6,7 @@ use leptos::prelude::*;
 /// # Example
 /// ```rust,no_run
 /// use leptos::prelude::*;
-/// use leptos_leaflet::LayerGroup;
+/// use leptos_leaflet_wyatt::LayerGroup;
 ///
 /// let _ = view! {
 ///     <LayerGroup id="earthquakes">

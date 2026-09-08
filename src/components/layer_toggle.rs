@@ -7,7 +7,7 @@ use std::rc::Rc;
 /// ```rust,no_run
 /// use leptos::prelude::*;
 /// use leptos::logging::log;
-/// use leptos_leaflet::LayerToggle;
+/// use leptos_leaflet_wyatt::LayerToggle;
 ///
 /// let _ = view! {
 ///     <LayerToggle
@@ -60,7 +60,7 @@ pub fn LayerToggle(
 /// ```rust,no_run
 /// use leptos::prelude::*;
 /// use leptos::logging::log;
-/// use leptos_leaflet::{LayerToggle, LayerToggleGroup};
+/// use leptos_leaflet_wyatt::{LayerToggle, LayerToggleGroup};
 ///
 /// let _ = view! {
 ///     <LayerToggleGroup>

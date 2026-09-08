@@ -7,7 +7,7 @@ use crate::types::TileLayerOptions;
 /// # Example
 /// ```rust,no_run
 /// use leptos::prelude::*;
-/// use leptos_leaflet::{TileLayer, TileLayerOptions};
+/// use leptos_leaflet_wyatt::{TileLayer, TileLayerOptions};
 ///
 /// let _ = view! {
 ///     <TileLayer

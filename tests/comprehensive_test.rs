@@ -1,5 +1,5 @@
-use leptos_leaflet::types::*;
-use leptos_leaflet::state::*;
+use leptos_leaflet_wyatt::types::*;
+use leptos_leaflet_wyatt::state::*;
 
 #[test]
 fn test_map_options_custom() {

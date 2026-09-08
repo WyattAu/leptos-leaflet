@@ -1,4 +1,4 @@
-# leptos-leaflet
+# leptos-leaflet-wyatt
 
 Leptos components for [Leaflet.js](https://leafletjs.com/) maps. Provides a declarative, reactive API for building interactive maps in Rust/WASM with Leptos.
 
@@ -18,14 +18,14 @@ Leptos components for [Leaflet.js](https://leafletjs.com/) maps. Provides a decl
 ```toml
 [dependencies]
 leptos = "0.8"
-leptos-leaflet = "0.1"
+leptos-leaflet-wyatt = "0.1"
 ```
 
 ### Basic Map
 
 ```rust
 use leptos::prelude::*;
-use leptos_leaflet::{Map, MapOptions, TileLayer};
+use leptos_leaflet_wyatt::{Map, MapOptions, TileLayer};
 
 #[component]
 fn App() -> impl IntoView {
@@ -164,7 +164,7 @@ LatLngBounds::new(
 
 ```rust
 use leptos::prelude::*;
-use leptos_leaflet::{Map, CircleMarker, CircleMarkerOptions, LatLng};
+use leptos_leaflet_wyatt::{Map, CircleMarker, CircleMarkerOptions, LatLng};
 
 #[component]
 fn DynamicMap() -> impl IntoView {
@@ -200,7 +200,7 @@ fn DynamicMap() -> impl IntoView {
 
 ```rust
 use leptos::prelude::*;
-use leptos_leaflet::{Map, TileLayer, LayerGroup};
+use leptos_leaflet_wyatt::{Map, TileLayer, LayerGroup};
 
 #[component]
 fn MapWithToggles() -> impl IntoView {
@@ -230,7 +230,7 @@ fn MapWithToggles() -> impl IntoView {
 
 ```rust
 use leptos::prelude::*;
-use leptos_leaflet::{Map, GeoJsonLayer, GeoJsonOptions};
+use leptos_leaflet_wyatt::{Map, GeoJsonLayer, GeoJsonOptions};
 
 #[component]
 fn GeoMap() -> impl IntoView {
@@ -269,7 +269,7 @@ fn GeoMap() -> impl IntoView {
 The library provides helper functions for imperative map control:
 
 ```rust
-use leptos_leaflet::{create_tile_layer, create_circle_marker, add_layer_to_map};
+use leptos_leaflet_wyatt::{create_tile_layer, create_circle_marker, add_layer_to_map};
 
 // Create layers programmatically
 let tile_layer = create_tile_layer(

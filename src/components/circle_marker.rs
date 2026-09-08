@@ -9,7 +9,7 @@ use crate::types::CircleMarkerOptions;
 /// # Example
 /// ```rust,no_run
 /// use leptos::prelude::*;
-/// use leptos_leaflet::{CircleMarker, CircleMarkerOptions, LatLng};
+/// use leptos_leaflet_wyatt::{CircleMarker, CircleMarkerOptions, LatLng};
 ///
 /// let _ = view! {
 ///     <CircleMarker

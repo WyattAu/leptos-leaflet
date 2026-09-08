@@ -1,9 +1,9 @@
 use leptos::prelude::*;
-use leptos_leaflet::*;
+use leptos_leaflet_wyatt::*;
 
 /// SSR Personal Site World Map Integration
 ///
-/// This example demonstrates how to integrate leptos-leaflet with the
+/// This example demonstrates how to integrate leptos-leaflet-wyatt with the
 /// existing world map functionality from the SSR personal site.
 ///
 /// It replaces the vanilla JS Leaflet code with typed Rust components,

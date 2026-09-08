@@ -1,5 +1,5 @@
 use leptos::prelude::*;
-use leptos_leaflet::*;
+use leptos_leaflet_wyatt::*;
 
 /// Example: World Map with Earthquakes and Country Boundaries
 ///
@@ -114,7 +114,7 @@ fn App() -> impl IntoView {
                                 } else {
                                     "#ffab00"
                                 };
-                                let radius = (*mag * 3.0).max(4.0);
+                                let radius: f64 = (*mag * 3.0f64).max(4.0);
                                 view! {
                                     <CircleMarker
                                         latlng=LatLng::new(*lat, *lng)
