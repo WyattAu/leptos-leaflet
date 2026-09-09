@@ -7,6 +7,7 @@ license = "MIT"
 repository = "https://github.com/WyattAu/leptos-leaflet"
 keywords = ["leptos", "leaflet", "map", "wasm", "interactive"]
 categories = ["web-programming", "wasm"]
+exclude = ["/target"]
 
 [dependencies]
 leptos = { version = "0.8.15", default-features = false }
@@ -35,3 +36,7 @@ opt-level = "s"
 lto = true
 codegen-units = 1
 strip = true
+
+[lints.clippy]
+unwrap_used = "warn"
+expect_used = "warn"
