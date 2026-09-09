@@ -2,6 +2,7 @@
 name = "leptos-leaflet-wyatt"
 version = "0.1.1"
 edition = "2021"
+rust-version = "1.85"
 description = "Leptos components for Leaflet.js maps (published as leptos-leaflet-wyatt; the leptos-leaflet name is taken on crates.io)"
 license = "MIT"
 repository = "https://github.com/WyattAu/leptos-leaflet"
