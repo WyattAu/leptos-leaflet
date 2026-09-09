@@ -1,6 +1,6 @@
 [package]
 name = "leptos-leaflet-wyatt"
-version = "0.1.0"
+version = "0.1.1"
 edition = "2021"
 description = "Leptos components for Leaflet.js maps (published as leptos-leaflet-wyatt; the leptos-leaflet name is taken on crates.io)"
 license = "MIT"

@@ -1,6 +1,5 @@
 use leptos::prelude::*;
 
-
 /// A layer group that contains multiple markers or layers.
 ///
 /// # Example
@@ -17,9 +16,11 @@ use leptos::prelude::*;
 #[component]
 pub fn LayerGroup(
     /// Unique identifier for this layer group.
-    #[prop(into)] id: String,
+    #[prop(into)]
+    id: String,
     /// Child markers to include in this group.
-    #[prop(optional)] children: Option<Children>,
+    #[prop(optional)]
+    children: Option<Children>,
 ) -> impl IntoView {
     view! {
         <div
@@ -36,13 +37,17 @@ pub fn LayerGroup(
 #[component]
 pub fn DivIcon(
     /// HTML content for the icon.
-    #[prop(into)] html: String,
+    #[prop(into)]
+    html: String,
     /// CSS class name for the icon.
-    #[prop(optional)] class_name: String,
+    #[prop(optional)]
+    class_name: String,
     /// Icon size `[width, height]` in pixels.
-    #[prop(optional)] icon_size: Option<[i32; 2]>,
+    #[prop(optional)]
+    icon_size: Option<[i32; 2]>,
     /// Icon anchor point `[x, y]` in pixels.
-    #[prop(optional)] icon_anchor: Option<[i32; 2]>,
+    #[prop(optional)]
+    icon_anchor: Option<[i32; 2]>,
 ) -> impl IntoView {
     let size = icon_size.unwrap_or([30, 14]);
     let anchor = icon_anchor.unwrap_or([15, 7]);

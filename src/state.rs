@@ -8,11 +8,15 @@ pub fn create_tile_layer(url: &str, options: Option<TileLayerOptions>) -> JsValu
     let opts = options.unwrap_or_default();
     let js_opts = js_sys::Object::new();
     if let Some(max_zoom) = opts.max_zoom {
-        js_sys::Reflect::set(&js_opts, &"maxZoom".into(), &JsValue::from_f64(max_zoom as f64)).unwrap();
+        crate::ffi::set_prop(&js_opts, "maxZoom", JsValue::from_f64(max_zoom as f64));
     }
-    js_sys::Reflect::set(&js_opts, &"crossOrigin".into(), &JsValue::from_bool(opts.cross_origin)).unwrap();
+    crate::ffi::set_prop(
+        &js_opts,
+        "crossOrigin",
+        JsValue::from_bool(opts.cross_origin),
+    );
     if let Some(ref attribution) = opts.attribution {
-        js_sys::Reflect::set(&js_opts, &"attribution".into(), &JsValue::from_str(attribution)).unwrap();
+        crate::ffi::set_prop(&js_opts, "attribution", JsValue::from_str(attribution));
     }
 
     ffi::create_tile_layer(url, &js_opts.into())
@@ -22,35 +26,50 @@ pub fn create_tile_layer(url: &str, options: Option<TileLayerOptions>) -> JsValu
 pub fn create_circle_marker(latlng: &LatLng, options: CircleMarkerOptions) -> JsValue {
     let ll = ffi::create_lat_lng(latlng.lat, latlng.lng);
     let js_opts = js_sys::Object::new();
-    js_sys::Reflect::set(&js_opts, &"radius".into(), &JsValue::from_f64(options.radius)).unwrap();
-    js_sys::Reflect::set(&js_opts, &"color".into(), &JsValue::from_str(&options.color)).unwrap();
-    js_sys::Reflect::set(&js_opts, &"fillColor".into(), &JsValue::from_str(&options.fill_color)).unwrap();
-    js_sys::Reflect::set(&js_opts, &"weight".into(), &JsValue::from_f64(options.weight)).unwrap();
-    js_sys::Reflect::set(&js_opts, &"opacity".into(), &JsValue::from_f64(options.opacity)).unwrap();
-    js_sys::Reflect::set(&js_opts, &"fillOpacity".into(), &JsValue::from_f64(options.fill_opacity)).unwrap();
+    crate::ffi::set_prop(&js_opts, "radius", JsValue::from_f64(options.radius));
+    crate::ffi::set_prop(&js_opts, "color", JsValue::from_str(&options.color));
+    crate::ffi::set_prop(
+        &js_opts,
+        "fillColor",
+        JsValue::from_str(&options.fill_color),
+    );
+    crate::ffi::set_prop(&js_opts, "weight", JsValue::from_f64(options.weight));
+    crate::ffi::set_prop(&js_opts, "opacity", JsValue::from_f64(options.opacity));
+    crate::ffi::set_prop(
+        &js_opts,
+        "fillOpacity",
+        JsValue::from_f64(options.fill_opacity),
+    );
 
     ffi::create_circle_marker(&ll, &js_opts.into())
 }
 
 /// Create a GeoJSON layer and return its JS object
-pub fn create_geo_json_layer(data: &str, options: Option<GeoJsonOptions>) -> Result<JsValue, String> {
+pub fn create_geo_json_layer(
+    data: &str,
+    options: Option<GeoJsonOptions>,
+) -> Result<JsValue, String> {
     let js_data = wasm_bindgen::JsValue::from_str(data);
 
     let opts = options.unwrap_or_default();
     let js_opts = js_sys::Object::new();
     if let Some(ref fill_color) = opts.fill_color {
-        js_sys::Reflect::set(&js_opts, &"fillColor".into(), &JsValue::from_str(fill_color)).unwrap();
+        crate::ffi::set_prop(&js_opts, "fillColor", JsValue::from_str(fill_color));
     }
     if let Some(fill_opacity) = opts.fill_opacity {
-        js_sys::Reflect::set(&js_opts, &"fillOpacity".into(), &JsValue::from_f64(fill_opacity)).unwrap();
+        crate::ffi::set_prop(&js_opts, "fillOpacity", JsValue::from_f64(fill_opacity));
     }
     if let Some(ref color) = opts.color {
-        js_sys::Reflect::set(&js_opts, &"color".into(), &JsValue::from_str(color)).unwrap();
+        crate::ffi::set_prop(&js_opts, "color", JsValue::from_str(color));
     }
     if let Some(weight) = opts.weight {
-        js_sys::Reflect::set(&js_opts, &"weight".into(), &JsValue::from_f64(weight)).unwrap();
+        crate::ffi::set_prop(&js_opts, "weight", JsValue::from_f64(weight));
     }
-    js_sys::Reflect::set(&js_opts, &"interactive".into(), &JsValue::from_bool(opts.interactive)).unwrap();
+    crate::ffi::set_prop(
+        &js_opts,
+        "interactive",
+        JsValue::from_bool(opts.interactive),
+    );
 
     Ok(ffi::create_geo_json(&js_data, &js_opts.into()))
 }
@@ -113,7 +132,7 @@ pub fn fit_bounds(map: &JsValue, bounds: &LatLngBounds, max_zoom: Option<i32>) {
 
     let opts = js_sys::Object::new();
     if let Some(z) = max_zoom {
-        js_sys::Reflect::set(&opts, &"maxZoom".into(), &JsValue::from_f64(z as f64)).unwrap();
+        crate::ffi::set_prop(&opts, "maxZoom", JsValue::from_f64(z as f64));
     }
 
     ffi::fit_bounds(map, &js_bounds, &opts.into());

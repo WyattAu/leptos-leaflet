@@ -21,9 +21,11 @@ use crate::types::PopupOptions;
 #[component]
 pub fn Popup(
     /// Popup display options.
-    #[prop(optional)] options: Option<PopupOptions>,
+    #[prop(optional)]
+    options: Option<PopupOptions>,
     /// Content to display in the popup.
-    #[prop(optional)] children: Option<Children>,
+    #[prop(optional)]
+    children: Option<Children>,
 ) -> impl IntoView {
     let _options = options.unwrap_or_default();
 
@@ -51,9 +53,11 @@ pub fn Popup(
 #[component]
 pub fn Tooltip(
     /// Tooltip text content.
-    #[prop(into)] content: String,
+    #[prop(into)]
+    content: String,
     /// Whether the tooltip follows the mouse.
-    #[prop(optional)] sticky: Option<bool>,
+    #[prop(optional)]
+    sticky: Option<bool>,
 ) -> impl IntoView {
     let _sticky = sticky.unwrap_or(false);
 

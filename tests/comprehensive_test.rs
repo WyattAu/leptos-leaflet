@@ -1,5 +1,4 @@
 use leptos_leaflet_wyatt::types::*;
-use leptos_leaflet_wyatt::state::*;
 
 #[test]
 fn test_map_options_custom() {
@@ -31,7 +30,10 @@ fn test_tile_layer_options_custom() {
     };
     assert_eq!(opts.max_zoom, Some(19));
     assert!(!opts.cross_origin);
-    assert_eq!(opts.subdomains, Some(vec!["a".to_string(), "b".to_string()]));
+    assert_eq!(
+        opts.subdomains,
+        Some(vec!["a".to_string(), "b".to_string()])
+    );
     assert_eq!(opts.attribution, Some("Test attribution".to_string()));
 }
 

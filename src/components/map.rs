@@ -27,13 +27,17 @@ use crate::types::MapOptions;
 #[component]
 pub fn Map(
     /// Unique identifier for the map container element.
-    #[prop(into)] id: String,
+    #[prop(into)]
+    id: String,
     /// Map initialization options.
-    #[prop(optional)] options: Option<MapOptions>,
+    #[prop(optional)]
+    options: Option<MapOptions>,
     /// Callback fired after map initialization.
-    #[prop(optional)] _on_init: Option<Box<dyn Fn(web_sys::Element) + Send + Sync>>,
+    #[prop(optional)]
+    _on_init: Option<Box<dyn Fn(web_sys::Element) + Send + Sync>>,
     /// Child layers to add to the map.
-    #[prop(optional)] children: Option<Children>,
+    #[prop(optional)]
+    children: Option<Children>,
 ) -> impl IntoView {
     let options = options.unwrap_or_default();
     let id_for_clone = id.clone();
@@ -67,7 +71,10 @@ pub fn Map(
             }
 
             // Get container element
-            let document = web_sys::window().unwrap().document().unwrap();
+            let Some(document) = web_sys::window().and_then(|w| w.document()) else {
+                leptos::logging::error!("No browser document for map #{}", id_clone);
+                return;
+            };
             let _container = match document.get_element_by_id(&id_clone) {
                 Some(el) => el,
                 None => {
@@ -78,17 +85,29 @@ pub fn Map(
 
             // Create map options
             let opts = js_sys::Object::new();
-            js_sys::Reflect::set(&opts, &"center".into(), &to_js_array(&options_clone.center)).unwrap();
-            js_sys::Reflect::set(&opts, &"zoom".into(), &JsValue::from_f64(options_clone.zoom as f64)).unwrap();
+            ffi::set_prop(&opts, "center", to_js_array(&options_clone.center));
+            ffi::set_prop(&opts, "zoom", JsValue::from_f64(options_clone.zoom as f64));
             if let Some(min) = options_clone.min_zoom {
-                js_sys::Reflect::set(&opts, &"minZoom".into(), &JsValue::from_f64(min as f64)).unwrap();
+                ffi::set_prop(&opts, "minZoom", JsValue::from_f64(min as f64));
             }
             if let Some(max) = options_clone.max_zoom {
-                js_sys::Reflect::set(&opts, &"maxZoom".into(), &JsValue::from_f64(max as f64)).unwrap();
+                ffi::set_prop(&opts, "maxZoom", JsValue::from_f64(max as f64));
             }
-            js_sys::Reflect::set(&opts, &"zoomControl".into(), &JsValue::from_bool(options_clone.zoom_control)).unwrap();
-            js_sys::Reflect::set(&opts, &"attributionControl".into(), &JsValue::from_bool(options_clone.attribution_control)).unwrap();
-            js_sys::Reflect::set(&opts, &"continuousWorld".into(), &JsValue::from_bool(options_clone.continuous_world)).unwrap();
+            ffi::set_prop(
+                &opts,
+                "zoomControl",
+                JsValue::from_bool(options_clone.zoom_control),
+            );
+            ffi::set_prop(
+                &opts,
+                "attributionControl",
+                JsValue::from_bool(options_clone.attribution_control),
+            );
+            ffi::set_prop(
+                &opts,
+                "continuousWorld",
+                JsValue::from_bool(options_clone.continuous_world),
+            );
 
             // Create map
             let map = ffi::create_map(&id_clone, &opts.into());
@@ -106,12 +125,12 @@ pub fn Map(
             let callback = wasm_bindgen::closure::Closure::<dyn Fn()>::new(move || {
                 ffi::invalidate_size(&map_clone);
             });
-            let _ = web_sys::window()
-                .unwrap()
-                .set_timeout_with_callback_and_timeout_and_arguments_0(
+            if let Some(window) = web_sys::window() {
+                let _ = window.set_timeout_with_callback_and_timeout_and_arguments_0(
                     callback.as_ref().unchecked_ref(),
                     200,
                 );
+            }
             callback.forget();
         });
     });

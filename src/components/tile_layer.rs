@@ -19,18 +19,18 @@ use crate::types::TileLayerOptions;
 #[component]
 pub fn TileLayer(
     /// URL template for tile images (e.g., `https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png`).
-    #[prop(into)] url: String,
+    #[prop(into)]
+    url: String,
     /// Tile layer options.
-    #[prop(optional)] options: Option<TileLayerOptions>,
+    #[prop(optional)]
+    options: Option<TileLayerOptions>,
 ) -> impl IntoView {
     let _options = options.unwrap_or_default();
 
     Effect::new(move |_| {
-        let window = web_sys::window();
-        if window.is_none() {
-            return; // SSR, skip
+        if web_sys::window().is_some() {
+            // TileLayer is created and attached by the parent Map component
         }
-        // TileLayer is created and attached by the parent Map component
     });
 
     let url_clone = url.clone();

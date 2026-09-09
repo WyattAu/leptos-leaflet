@@ -1,6 +1,4 @@
 use leptos::prelude::*;
-use wasm_bindgen::prelude::*;
-use wasm_bindgen::JsCast;
 
 use crate::types::CircleMarkerOptions;
 
@@ -28,16 +26,14 @@ pub fn CircleMarker(
     /// Geographic position of the marker.
     latlng: crate::types::LatLng,
     /// Visual options for the circle marker.
-    #[prop(optional)] options: CircleMarkerOptions,
+    #[prop(optional)]
+    options: CircleMarkerOptions,
 ) -> impl IntoView {
     Effect::new(move |_| {
-        let window = web_sys::window();
-        if window.is_none() {
-            return; // SSR, skip
+        if web_sys::window().is_some() {
+            // CircleMarker is created and attached by the parent LayerGroup
+            // This component provides the configuration
         }
-
-        // CircleMarker is created and attached by the parent LayerGroup
-        // This component provides the configuration
     });
 
     let lat = latlng.lat;

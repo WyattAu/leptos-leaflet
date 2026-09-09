@@ -5,15 +5,15 @@
 
 #![deny(missing_docs)]
 
-/// Low-level Leaflet.js FFI bindings.
-pub mod ffi;
 /// Leptos components for map rendering.
 pub mod components;
-/// Map types and configuration.
-pub mod types;
+/// Low-level Leaflet.js FFI bindings.
+pub mod ffi;
 /// Map layer state management.
 pub mod state;
+/// Map types and configuration.
+pub mod types;
 
 pub use components::*;
-pub use types::*;
 pub use state::*;
+pub use types::*;
