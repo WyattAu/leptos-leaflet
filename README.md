@@ -291,7 +291,12 @@ See `examples/world-map/` for a complete working example demonstrating:
 - Interactive layer toggles
 - Country click handling
 
-Run with: `cargo run --example world-map`
+Run with:
+
+```sh
+cd examples/world-map
+trunk serve
+```
 
 ## Requirements
 

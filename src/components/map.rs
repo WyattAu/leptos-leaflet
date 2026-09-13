@@ -2,6 +2,7 @@ use leptos::prelude::*;
 use wasm_bindgen::prelude::*;
 use wasm_bindgen::JsCast;
 
+use crate::components::attach_and_watch;
 use crate::ffi;
 use crate::types::MapOptions;
 
@@ -75,7 +76,7 @@ pub fn Map(
                 leptos::logging::error!("No browser document for map #{}", id_clone);
                 return;
             };
-            let _container = match document.get_element_by_id(&id_clone) {
+            let container = match document.get_element_by_id(&id_clone) {
                 Some(el) => el,
                 None => {
                     leptos::logging::error!("Map container #{} not found", id_clone);
@@ -114,6 +115,10 @@ pub fn Map(
 
             // Store map reference
             map_js.borrow_mut().replace(map.clone());
+
+            // Materialize declarative layer stubs (tile layers, markers,
+            // layer groups, GeoJSON) and keep future renders in sync
+            attach_and_watch(&map, &container);
 
             // Update reactive signals
             set_map_center.set(options_clone.center);

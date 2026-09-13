@@ -1,3 +1,4 @@
+mod attach;
 mod circle_marker;
 mod geo_json;
 mod layer_group;
@@ -5,6 +6,8 @@ mod layer_toggle;
 mod map;
 mod popup;
 mod tile_layer;
+
+pub(crate) use attach::attach_and_watch;
 
 pub use circle_marker::*;
 pub use geo_json::*;

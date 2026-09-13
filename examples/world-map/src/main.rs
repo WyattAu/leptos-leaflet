@@ -104,6 +104,7 @@ fn App() -> impl IntoView {
 
                 // Earthquake markers (conditionally shown)
                 {move || if show_quakes.get() {
+                    let earthquakes = earthquakes.clone();
                     view! {
                         <LayerGroup id="earthquakes">
                             {earthquakes.iter().map(|(lat, lng, mag, name)| {
