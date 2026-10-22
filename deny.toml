@@ -7,6 +7,15 @@ all-features = true
 [advisories]
 version = 2
 yanked = "deny"
+# Held on purpose — both reach us through the leptos derive stack and are
+# unfixable from this repo:
+# - RUSTSEC-2024-0436 (paste) — unmaintained; leptos' dependency chain.
+# - RUSTSEC-2026-0173 (proc-macro-error2) — unmaintained; successor exists
+#   upstream but leptos has not moved to it.
+ignore = [
+  "RUSTSEC-2024-0436",
+  "RUSTSEC-2026-0173",
+]
 
 [licenses]
 version = 2
@@ -20,6 +29,8 @@ allow = [
   "Unicode-3.0",
   "Zlib",
   "CDLA-Permissive-2.0",
+  "CC0-1.0",
+  "BSL-1.0",
 ]
 confidence-threshold = 0.93
 
