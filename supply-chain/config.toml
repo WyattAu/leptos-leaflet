@@ -540,8 +540,16 @@ criteria = "safe-to-deploy"
 version = "2.0.117"
 criteria = "safe-to-deploy"
 
+[[exemptions.syn]]
+version = "3.0.9"
+criteria = "safe-to-deploy"
+
 [[exemptions.syn_derive]]
 version = "0.2.0"
+criteria = "safe-to-deploy"
+
+[[exemptions.synstructure]]
+version = "0.14.0"
 criteria = "safe-to-deploy"
 
 [[exemptions.tachys]]
@@ -682,6 +690,10 @@ criteria = "safe-to-deploy"
 
 [[exemptions.yoke-derive]]
 version = "0.8.2"
+criteria = "safe-to-deploy"
+
+[[exemptions.yoke-derive]]
+version = "0.8.4"
 criteria = "safe-to-deploy"
 
 [[exemptions.zerofrom]]
