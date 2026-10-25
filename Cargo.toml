@@ -1,9 +1,9 @@
 [package]
 name = "leptos-leaflet-wyatt"
-version = "0.1.1"
+version = "0.1.2"
 edition = "2021"
 rust-version = "1.85"
-description = "Leptos components for Leaflet.js maps (published as leptos-leaflet-wyatt; the leptos-leaflet name is taken on crates.io)"
+description = "Leptos components for [Leaflet.js](https://leafletjs.com/) maps. Provides a declarative, reactive API for building interactive maps in Rust/WASM with Leptos"
 license = "MIT"
 repository = "https://github.com/WyattAu/leptos-leaflet"
 keywords = ["leptos", "leaflet", "map", "wasm", "interactive"]
